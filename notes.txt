@@ -44,6 +44,15 @@ REACT
     npm i jwt-decode (jwt authentication. decodes the token) 
 - Install additional library to format dates 
     npm i moment react-moment
+- Github
+    echo "# devconnect" >> README.md
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git remote add origin https://github.com/bodyfann/devconnect.git
+    git push -u origin master
+
+    !!! SEE LAST LESSON FOR BUILDING AND DEPLOYING !!!
 
 LINKS
 =====
