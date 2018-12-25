@@ -62,6 +62,7 @@ LINKS
 TO CHECK
 ========
 
+- HEROKU BUILD IS FAILING!!!
 - Unable to delete the bio (bug?)
 - Cannot delete exp and edu 
 - Logout from http://localhost:3000/profile/dannybof spinning
