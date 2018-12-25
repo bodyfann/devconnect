@@ -1,0 +1,58 @@
+- Visual Studio Code
+  - Extension: ES7 React/Redux/GraphQL/React-Native snippets
+  - Extension: Bracket Pair Colorizer
+  - Extension: Prettier - Code formatter
+  - Extension: Live Server
+  - Extension: Node.js Modules Intellisense
+- MLab (mongodb://bodyfann:body123@ds125479.mlab.com:25479/devconnector)
+- npm init
+- npm i express mongoose passport passport-jwt jsonwebtoken body-parser bcryptjs validator gravatar
+- npm i -D nodemon (-D = Dev dependancy)
+- Nodemon
+  In package.json: 
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+- Git
+  git init
+  git add all
+  git commit -am 'Initial express server with route files'
+
+REACT
+=====
+- Create React App
+    npm i create-react-app (-g = install globally on the machine, requires admin permissions)
+    create-react-app client
+- Update package.json:
+    "proxy": "http://localhost:5000"
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+- Install Concurrently
+    npm i concurrently
+- React Router
+    npm i react-router-dom (!!! In client folder !!!)
+- Axios
+    npm i axios (!!! In client folder !!!)
+- Classnames
+    npm i classnames (!!! In client folder !!!)
+- Redux
+    npm i redux react-redux redux-thunk
+- Install additional module for jwt
+    npm i jwt-decode (jwt authentication. decodes the token) 
+- Install additional library to format dates 
+    npm i moment react-moment
+
+LINKS
+=====
+- https://pplearn.udemy.com/mern-stack-front-to-back/learn/v4/t/lecture/10055168?start=0
+- https://mlab.com/databases/devconnector/collections/users
+
+TO CHECK
+========
+
+- Unable to delete the bio (bug?)
+- Cannot delete exp and edu 
+- Logout from http://localhost:3000/profile/dannybof spinning
