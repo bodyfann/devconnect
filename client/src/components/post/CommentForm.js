@@ -27,10 +27,12 @@ class CommentForm extends Component {
 
     const { user } = this.props.auth;
     const { postId } = this.props;
+    const { profile } = this.props.profile;
 
     const newComment = {
       text: this.state.text,
       name: user.name,
+      handle: profile.handle,
       avatar: user.avatar
     };
 
@@ -41,7 +43,7 @@ class CommentForm extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  a;
   render() {
     const { errors } = this.state;
     return (
@@ -75,12 +77,14 @@ class CommentForm extends Component {
 CommentForm.propTypes = {
   addComment: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
   postId: PropTypes.string.isRequired,
   errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
+  profile: state.profile,
   errors: state.errors
 });
 

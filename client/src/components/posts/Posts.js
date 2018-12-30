@@ -5,10 +5,12 @@ import PostForm from './PostForm';
 import PostFeed from './PostFeed';
 import Spinner from '../common/Spinner';
 import { getPosts } from '../../actions/postActions';
+import { getCurrentProfile } from '../../actions/profileActions';
 
 class Posts extends Component {
   componentDidMount() {
     this.props.getPosts();
+    this.props.getCurrentProfile(); // Needed to get the handle to link to user profiles
   }
 
   render() {
@@ -38,14 +40,17 @@ class Posts extends Component {
 
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired
+  getCurrentProfile: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  post: state.post
+  post: state.post,
+  profile: state.profile
 });
 
 export default connect(
   mapStateToProps,
-  { getPosts }
+  { getPosts, getCurrentProfile }
 )(Posts);

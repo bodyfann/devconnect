@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import ProfileHeader from './ProfileHeader';
 import ProfileAbout from './ProfileAbout';
 import ProfileCreds from './ProfileCreds';
@@ -10,16 +9,25 @@ import Spinner from '../common/Spinner';
 import { getProfileByHandle } from '../../actions/profileActions';
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.goBack = this.goBack.bind(this);
+  }
+
   componentDidMount() {
     if (this.props.match.params.handle) {
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.profile.profile === null && this.props.profile.loading) {
+  componentDidUpdate() {
+    if (this.props.profile.profile === null && !this.props.profile.loading) {
       this.props.history.push('/not-found');
     }
+  }
+
+  goBack() {
+    this.props.history.goBack();
   }
 
   render() {
@@ -33,9 +41,12 @@ class Profile extends Component {
         <div>
           <div className="row">
             <div className="col-md-6">
-              <Link to="/profiles" className="btn btn-light mb-3 float-left">
-                Back to Profiles
-              </Link>
+              <button
+                onClick={this.goBack}
+                className="btn btn-light mb-3 float-left"
+              >
+                Go Back
+              </button>
             </div>
             <div className="col-md-6" />
           </div>

@@ -7,10 +7,12 @@ import Spinner from '../common/Spinner';
 import CommentForm from './CommentForm';
 import CommentFeed from './CommentFeed';
 import { getPost } from '../../actions/postActions';
+import { getCurrentProfile } from '../../actions/profileActions';
 
 class Post extends Component {
   componentDidMount() {
     this.props.getPost(this.props.match.params.id);
+    this.props.getCurrentProfile(); // Needed to get the handle to link to user profiles
   }
 
   render() {
@@ -48,14 +50,16 @@ class Post extends Component {
 
 Post.propTypes = {
   getPost: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  post: state.post
+  post: state.post,
+  profile: state.profile
 });
 
 export default connect(
   mapStateToProps,
-  { getPost }
+  { getPost, getCurrentProfile }
 )(Post);

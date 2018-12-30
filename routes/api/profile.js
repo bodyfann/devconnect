@@ -83,7 +83,6 @@ router.get('/handle/:handle', (req, res) => {
 // @access  Public
 router.get('/user/:user_id', (req, res) => {
   const errors = {};
-
   Profile.findOne({ user: req.params.user_id })
     .populate('user', ['name', 'avatar'])
     .then(profile => {
