@@ -62,7 +62,8 @@ LINKS
 TO CHECK
 ========
 
-- Unable to delete the bio (bug?)
-- Cannot delete exp and edu 
 - Logout from http://localhost:3000/profile/dannybof spinning
-- https://bodyfann2.herokuapp.com/feed Links from picture take to wrong page
+- Cannot go back from PageNotFound (store not found)
+- Search functionality in profiles
+- Form errors not reset in Edit Profile page
+- Incognito not working??? See store.js

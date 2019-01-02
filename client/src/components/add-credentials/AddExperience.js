@@ -139,8 +139,16 @@ class AddExperience extends Component {
                 <input
                   type="submit"
                   value="Submit"
-                  className="btn btn-info btn-block mt-4"
+                  className="btn btn-info mt-4"
                 />
+                <a
+                  href="/dashboard"
+                  id="cancel"
+                  name="cancel"
+                  className="btn btn-default mt-4"
+                >
+                  Cancel
+                </a>
               </form>
             </div>
           </div>

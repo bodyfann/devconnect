@@ -32,7 +32,7 @@ router.get(
       .then(profile => {
         if (!profile) {
           errors.noprofile = 'There is no profile for this user';
-          return res.status(404).json(errors);
+          //return res.status(404).json(errors);
         }
         res.json(profile);
       })
@@ -70,7 +70,7 @@ router.get('/handle/:handle', (req, res) => {
     .then(profile => {
       if (!profile) {
         errors.noprofile = 'There is no profile for this user';
-        res.status(404).json(errors);
+        //res.status(404).json(errors);
       }
 
       res.json(profile);
@@ -88,7 +88,7 @@ router.get('/user/:user_id', (req, res) => {
     .then(profile => {
       if (!profile) {
         errors.noprofile = 'There is no profile for this user';
-        res.status(404).json(errors);
+        //res.status(404).json(errors);
       }
 
       res.json(profile);
@@ -114,27 +114,37 @@ router.post(
     }
     // Get fields
     const profileFields = {};
-    profileFields.user = req.user.id;
-    if (req.body.handle) profileFields.handle = req.body.handle;
+    profileFields.user = req.user.id; // Required
+    if (req.body.handle) profileFields.handle = req.body.handle; // Required
     if (req.body.company) profileFields.company = req.body.company;
+    else profileFields.company = '';
     if (req.body.website) profileFields.website = req.body.website;
+    else profileFields.website = '';
     if (req.body.location) profileFields.location = req.body.location;
+    else profileFields.location = '';
     if (req.body.bio) profileFields.bio = req.body.bio;
-    if (req.body.status) profileFields.status = req.body.status;
+    else profileFields.bio = '';
+    if (req.body.status) profileFields.status = req.body.status; // Required
     if (req.body.githubusername)
       profileFields.githubusername = req.body.githubusername;
+    else profileFields.githubusername = '';
     // Skills - Split into array
     if (typeof req.body.skills !== 'undefined') {
-      profileFields.skills = req.body.skills.split(',');
+      profileFields.skills = req.body.skills.split(','); // Required
     }
 
     // Social
     profileFields.social = {};
     if (req.body.youtube) profileFields.social.youtube = req.body.youtube;
+    else profileFields.social.youtube = '';
     if (req.body.twitter) profileFields.social.twitter = req.body.twitter;
+    else profileFields.social.twitter = '';
     if (req.body.facebook) profileFields.social.facebook = req.body.facebook;
+    else profileFields.social.facebook = '';
     if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
+    else profileFields.social.linkedin = '';
     if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
+    else profileFields.social.instagram = '';
 
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {

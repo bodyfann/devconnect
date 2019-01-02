@@ -7,6 +7,7 @@ import ProfileCreds from './ProfileCreds';
 import ProfileGithub from './ProfileGithub';
 import Spinner from '../common/Spinner';
 import { getProfileByHandle } from '../../actions/profileActions';
+import NotFound from '../not-found/NotFound';
 
 class Profile extends Component {
   constructor(props) {
@@ -20,12 +21,6 @@ class Profile extends Component {
     }
   }
 
-  componentDidUpdate() {
-    if (this.props.profile.profile === null && !this.props.profile.loading) {
-      this.props.history.push('/not-found');
-    }
-  }
-
   goBack() {
     this.props.history.goBack();
   }
@@ -34,9 +29,14 @@ class Profile extends Component {
     const { profile, loading } = this.props.profile;
     let profileContent;
 
-    if (profile === null || loading) {
+    if (loading) {
       profileContent = <Spinner />;
+    } else if (profile === null) {
+      profileContent = <NotFound />;
     } else {
+      /*if (profile === null || loading) {
+      profileContent = <Spinner />;
+    } else { */
       profileContent = (
         <div>
           <div className="row">
