@@ -59,11 +59,10 @@ LINKS
 - https://pplearn.udemy.com/mern-stack-front-to-back/learn/v4/t/lecture/10055168?start=0
 - https://mlab.com/databases/devconnector/collections/users
 
-TO CHECK
+FEATURES
 ========
-
-- Logout from http://localhost:3000/profile/dannybof spinning
-- Cannot go back from PageNotFound (store not found)
 - Search functionality in profiles
-- Form errors not reset in Edit Profile page
-- Incognito not working??? See store.js
+
+BUGS
+====
+- Form errors do not properly reset in Edit Profile page if you exit the page via  <Link />. They do if you use an anchortag
